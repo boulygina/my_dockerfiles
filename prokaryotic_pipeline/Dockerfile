@@ -20,7 +20,7 @@ FROM ubuntu:17.10
 ################## BEGIN INSTALLATION ###################### 
 
 ENV ZIP=SPAdes-3.11.1-Linux.tar.gz 
-ENV URL=https:http://cab.spbu.ru/files/release3.11.1
+ENV URL=http://cab.spbu.ru/files/release3.11.1
 ENV FOLDER=SPAdes-3.11.1-Linux 
 ENV DST=/home/docker/bin 
 
@@ -28,7 +28,7 @@ RUN wget $URL/$ZIP -O $DST/$ZIP && \
 	tar xvf $DST/$ZIP -C $DST && \ 
 	rm $DST/$ZIP && \ 
 	cd $DST/$FOLDER && \ 
-	mv $DST/$FOLDER/bin/* /home/biodocker/bin && \
+	mv $DST/$FOLDER/bin/* /home/docker/bin && \
 	rm -rf $DST/$FOLDER
 
 # CHANGE WORKDIR TO /DATA
