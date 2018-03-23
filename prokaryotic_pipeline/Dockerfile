@@ -7,7 +7,7 @@
 # Description: Tools (written in C using htslib) for manipulating next-generation sequencing data
 # Website: http://bioinf.spbau.ru/spades
 # Tags: Genomics
-# Provides: spades 3.6.0
+# Provides: spades 3.11.1
 # Base Image: biodckr/biodocker
 # Build Cmd: docker build --rm -t biodckrdev/spades 3.6.0/.
 # Pull Cmd: docker pull biodckrdev/spades
@@ -15,14 +15,14 @@
 #################################################################
 
 # Set the base image to Ubuntu 
-FROM biodckr/biodocker
+FROM ubuntu:17.10
 
 ################## BEGIN INSTALLATION ###################### 
 
-ENV ZIP=SPAdes-3.6.0-Linux.tar.gz 
-ENV URL=https://github.com/BioDocker/software-archive/releases/download/spades 
-ENV FOLDER=SPAdes-3.6.0-Linux 
-ENV DST=/home/biodocker/bin 
+ENV ZIP=SPAdes-3.11.1-Linux.tar.gz 
+ENV URL=https:http://cab.spbu.ru/files/release3.11.1
+ENV FOLDER=SPAdes-3.11.1-Linux 
+ENV DST=/home/docker/bin 
 
 RUN wget $URL/$ZIP -O $DST/$ZIP && \ 
 	tar xvf $DST/$ZIP -C $DST && \ 
@@ -32,7 +32,7 @@ RUN wget $URL/$ZIP -O $DST/$ZIP && \
 	rm -rf $DST/$FOLDER
 
 # CHANGE WORKDIR TO /DATA
-WORKDIR /data
+WORKDIR /home/docker
 
 # DEFINE DEFAULT COMMAND
 CMD ["bwa-spades"]
